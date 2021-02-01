@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/admin-boot/admin-boot.iml" filepath="$PROJECT_DIR$/admin-boot/admin-boot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qz-jeemis-demo.iml" filepath="$PROJECT_DIR$/qz-jeemis-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qz-module-business/qz-module-business.iml" filepath="$PROJECT_DIR$/qz-module-business/qz-module-business.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qz-module-system/qz-module-system.iml" filepath="$PROJECT_DIR$/qz-module-system/qz-module-system.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,144 @@
+# Tomcat
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+  port: 8282
+  #https ssl配置  classpath:keystore.p12
+  #ssl:
+   # enabled: true
+   # key-store: keystore.p12
+   # key-store-password: 123456
+   # keyStoreType: PKCS12
+   # keyAlias: tomcat
+    #双向验证,客户端也必须有证书
+   # client-auth: NEED             # 需要验证客户端身份
+   # trust-store: server.keystore
+   # trust-store-type: PKCS12
+    #trust-store-password: 123456
+  connection-timeout: 5000
+  servlet:
+    context-path: /
+    session:
+      cookie:
+        http-only: true
+spring:
+  # 环境 dev|test|prod
+  profiles:
+    active: dev
+  messages:
+    encoding: UTF-8
+    basename: i18n/messages
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+      enabled: true
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password:    # 密码（默认为空）
+    timeout: 6000  # 连接超时时长（毫秒）
+    jedis:
+      pool:
+        max-active: 1000  # 连接池最大连接数（使用负值表示没有限制）
+        max-wait: -1ms      # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-idle: 10      # 连接池中的最大空闲连接
+        min-idle: 5       # 连接池中的最小空闲连接
+  activiti:
+    check-process-definitions: false
+    database-schema-update: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  freemarker:
+    suffix: .html
+    request-context-attribute: request
+  mvc:
+    static-path-pattern: /**
+  #静态资源配置 public是放activit model的
+  resources:
+      static-locations: classpath:/static, classpath:/public,file:d:/uploadfiles/webapp
+#mybatis
+mybatis-plus:
+  #mapper-locations: classpath:/mapper/**/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.qzsoft.**.entity,com.qzsoft.demomis.**.entity
+  #类型转换器 boolean转换int mysql可以不用配置
+  typeHandlersPackage: com.qzsoft.jeemis.common.typehandle
+  global-config:
+    #数据库相关配置
+    db-config:
+      #主键类型  AUTO:"数据库ID自增", INPUT:"用户输入ID", ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID";
+      id-type: ID_WORKER
+      #字段策略 IGNORED:"忽略判断",NOT_NULL:"非 NULL 判断"),NOT_EMPTY:"非空判断"
+      field-strategy: NOT_NULL
+      #驼峰下划线转换
+      column-underline: true
+      #db-type: mysql
+    banner: false
+  #原生配置
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+    jdbc-type-for-null: 'null'
+
+#即时通讯配置
+tio:
+  websocket:
+    server:
+      port: 9876
+      # 心跳时间
+      heartbeat-timeout: 8000
+      use-scanner: false
+      # 集群配置 默认关闭
+    cluster:
+      enabled: false
+      # 集群是通过redis的Pub/Sub实现，所以需要配置Redis
+      redis:
+        config-path:
+        ip: 127.0.0.1
+        port: 6379
+      all: true
+      group: true
+      ip: true
+      user: true
+    # SSL 配置
+    ssl:
+      enabled: false
+      key-store: keystore.p12
+      password: 123456
+      #trust-store: keystore.p12
+#qzjeemis专用
+jeemis:
+  cache:
+    names: qzjeemis,test1  #定义的缓存名字
+    ttls: 3600,-1  #过期时间 单位秒  -1表示永不过期 默认3600秒
+  redis:
+    open: false  # 是否开启redis缓存  true开启   false关闭
+    subscribe: 主题1,topic2  #订阅的主题, 轻量级消息队列
+  path: # 本地文件路径
+    upload: d:\uploadfiles
+    temp: d:\uploadfiles\tmpfile
+    webapp: d:\uploadfiles\webapp
+  #视频解码器
+  video:
+    decode: d:\uploadfiles\ffmpeg -i %s -an -vcodec copy %s  #ffmpeg.exe -i %s %s
+  #file:   # 本地文件路径废弃的配置
+  #  UploadPath: d:\uploadfiles
+  #  tempPath: d:\uploadfiles\tmpfile
+  #即时通讯服务,jeemis配置
+  im:
+    dbHandler: com.qzsoft.jeemis.im.repository.mysqlStore // 消息持久化默认使用mysql,如果使用其他存储自己实现
+  #加密证书设置
+  encrypt:
+    enabled: true
+    keyStore: qzsoft.jks
+    keyStorePassword: 123456
+    keyAlias: sdmq
+  #验证码类型 ArithmeticCaptcha 算术  SpecCaptcha 常规
+  login:
+    captchaType: SpecCaptcha

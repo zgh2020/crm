@@ -1,0 +1,92 @@
+spring:
+  autoconfigure:
+    exclude: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure
+  datasource:
+    druid:
+      stat-view-servlet:
+        #loginUsername: admin
+        #loginPassword: 123456
+        allow:
+        enabled: true
+        url-pattern: /druid/*
+        #login-username: admin
+        #login-password: admin
+    dynamic:
+      primary: master
+      p6spy: true # sql性能监控,默认false,线上关闭。
+      druid:
+        initial-size: 10
+        max-active: 1000
+        min-idle: 10
+        max-wait: 6000
+        pool-prepared-statements: true
+        max-pool-prepared-statement-per-connection-size: 20
+        time-between-eviction-runs-millis: 60000
+        min-evictable-idle-time-millis: 300000
+        #mysql需要打开注释
+        validationQuery: SELECT 1
+        #Oracle需要打开注释
+        #validation-query: SELECT 1 FROM DUAL
+        test-while-idle: true
+        test-on-borrow: false
+        test-on-return: false
+        filters: stat,wall
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 100000
+          merge-sql: false
+        wall:
+          none-base-statement-allow: true
+          multi-statement-allow: true
+      datasource:
+        master:
+          #driver-class-name: org.postgresql.Driver
+          #url: jdbc:postgresql://172.16.10.246:5432/rcldcx?charSet=UTF-8&&allowEncodingChanges=true
+          #username: postgres
+          #password: qzsoft123
+          #driver-class-name: org.postgresql.Driver
+          #url: jdbc:postgresql://10.200.50.102:5432/airflow
+          #username: airflow
+          #password: airflow
+          #MySQL
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/crm?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC
+          username: root
+          #password: ENC(Y3ycHCcZGa+N+OK+qXTWA0gJ1L1N+FYrswTgRQEegdKVTefiujYxjlytR6zOuV5Y3AifL/P10yWshYKQaqpkkQ==)
+          password: 123456
+        slave:
+          #MySQL
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://localhost:3306/crm?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC
+          username: root
+          password: 123456
+          #h2:
+          #driver-class-name: org.h2.Driver
+          #url: jdbc:h2:tcp://localhost/mem:test1
+          #username: sa
+          #password:
+          #sqllite:
+          #  driver-class-name: org.sqlite.JDBC
+          #  url: "jdbc:sqlite::memory:"
+        #sqlserver:
+         # driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+         # url: jdbc:sqlserver://localhost:1433;DatabaseName=cms5.0
+         # username: sa
+         # password: 123#@!
+        #mycat:
+        #  driver-class-name: com.mysql.jdbc.Driver
+        #  url: jdbc:mysql://localhost:8066/TESTDB
+        #  username: root
+        #  password: 123456
+  data:
+    mongodb:
+      host: 172.16.10.246
+      port: 27017
+      database: db1
+      username: sa
+      password: qzhrmis2019
+#是否打开验证码
+jeemis:
+  login:
+    captchaEnable: false
+
