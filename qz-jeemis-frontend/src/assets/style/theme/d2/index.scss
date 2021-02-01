@@ -1,0 +1,89 @@
+@import './setting.scss';
+@import '../theme.scss';
+.theme-#{$theme-name} {
+  .d2-theme-header {
+    background: #409eff;
+    //background: linear-gradient(120deg, #2f54eb 0%, #2f54eb 100%);
+  }
+  /*
+  .el-dialog__header
+  {
+    background: #a2d0f5;
+    //background: linear-gradient(120deg, #7bbdeb 0%, #fff4eb 100%);
+    height: 40px;
+    padding:9px 10px;
+  }
+  */
+
+  @mixin clearfix {
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+
+  .el-dialog__header
+  {
+    clear: both;
+    @include clearfix;
+    background: #ECF5FF;
+    //background: linear-gradient(120deg, #7bbdeb 0%, #fff4eb 100%);
+    height: 40px;
+    line-height: 40px;
+    padding:0px 10px;
+
+  }
+  .el-dialog{
+    position:relative;
+    margin:0 auto 50px;
+    background:#fff;
+    -webkit-box-shadow:0 1px 3px rgba(0,0,0,.3);
+    box-shadow:0 1px 3px rgba(0,0,0,.3);
+    /*-webkit-box-sizing:border-box;
+    box-sizing:border-box;
+    border-radius:10px;*/
+    border-radius: 5px;
+    box-sizing: border-box;
+    border:solid 1px rgba(255, 244, 235, 0);
+    box-shadow:0 0 12px #bfbfbf;
+    width:50%
+  }
+  .el-dialog__headerbtn
+  {
+    clear: both;
+    top: 2px;
+  }
+  .el-dialog__body
+  {
+    padding: 12px 18px 18px ;
+    height: 100%;
+  }
+
+  .dialog-icon {
+    height: 16px;
+    width: 18px;
+    transition: all .3s;
+    cursor: pointer;
+  }
+
+  .diaglogtitle {
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 40px;
+    vertical-align:middle;
+  }
+  .qzDialogTitle {
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 40px;
+    vertical-align:middle;
+  }
+
+  .el-input__inner{
+    color: #000000;
+  }
+  .el-textarea__inner{
+    color: #000000;
+  }
+}

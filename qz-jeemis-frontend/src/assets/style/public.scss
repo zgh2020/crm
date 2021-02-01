@@ -1,0 +1,172 @@
+@import '~@/assets/style/unit/color.scss';
+
+// 工具类名统一前缀
+$prefix: d2;
+
+// 禁止用户选中 鼠标变为手形
+%unable-select {
+  user-select: none;
+  cursor: pointer;
+}
+
+// 填满父元素
+// 组要父元素 position: relative | absolute;
+%full {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
+// flex 垂直水平居中
+%flex-center-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+%flex-center-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+// 将元素模拟成卡片外观
+%card {
+  border: 1px solid #dddee1;
+  border-color: #e9eaec;
+  background: #fff;
+  border-radius: 4px;
+  font-size: 14px;
+  position: relative;
+}
+/*
+树滚动条显示
+ */
+.el-tree {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.el-tree > .el-tree-node {
+  min-width: 100%;
+  display: inline-block !important;
+}
+
+/*
+elementUi dialog样式更改
+ */
+.el-dialog {
+  /*max-height: calc(100% - 60px);*/
+  max-width: calc(100% - 30px);
+  display: flex;
+  flex-direction: column;
+ /* position:absolute;
+  top: 0%;
+  left: 50%;
+  margin: 0 !important;
+  transform: translate(-50%, 5%)*/
+}
+.el-dialog >.el-dialog__body{
+    overflow: auto
+  }
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.el-dialog__header
+{
+  clear: both;
+  @include clearfix;
+  background: #ECF5FF;
+  //background: linear-gradient(120deg, #7bbdeb 0%, #fff4eb 100%);
+  height: 40px;
+  line-height: 40px;
+  padding:0px 10px;
+
+}
+.el-dialog{
+  position:relative;
+  margin:0 auto 50px;
+  background:#fff;
+  -webkit-box-shadow:0 1px 3px rgba(0,0,0,.3);
+  box-shadow:0 1px 3px rgba(0,0,0,.3);
+  /*-webkit-box-sizing:border-box;
+  box-sizing:border-box;
+  border-radius:10px;*/
+  border-radius: 5px;
+  box-sizing: border-box;
+  border:solid 1px rgba(255, 244, 235, 0);
+  box-shadow:0 0 12px #bfbfbf;
+  width:50%
+}
+.el-dialog__headerbtn
+{
+  clear: both;
+  top: 2px;
+}
+.el-dialog__body
+{
+  padding: 12px 18px 18px ;
+  height: 100%;
+}
+
+.dialog-icon {
+  height: 16px;
+  width: 18px;
+  transition: all .3s;
+  cursor: pointer;
+}
+
+.diaglogtitle {
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 40px;
+  vertical-align:middle;
+}
+.qzDialogTitle {
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 40px;
+  vertical-align:middle;
+}
+
+.el-input__inner{
+  color: #000000;
+}
+.el-textarea__inner{
+  color: #000000;
+}
+/**
+临时解决表头为0时 element-ui table head设置高度出问题 show-header="true"
+ */
+.hide-table-header .el-table__header-wrapper{
+  display: none;
+}
+
+.vxe-modal--wrapper .vxe-modal--header{
+  background-color: #ECF5FF;
+}
+
+/*.vxe-header--row{
+  background-color: #ffffff;
+}*/
+/*
+* elemrntui table表头错位
+ */
+body .el-table th.gutter {
+  display: table-cell !important
+}
+
+body .vxe-table th.gutter {
+  display: table-cell !important
+}
+
+

@@ -1,0 +1,12 @@
+@import './setting.scss';
+@import '../theme.scss';
+.theme-#{$theme-name} {
+  .d2-theme-header {
+    background: #17b3a3;
+    //background: linear-gradient(90deg,#1d1e23,#3f4045);
+  }
+  .d2-layout-header-aside-group .d2-layout-header-aside-content .d2-theme-container .d2-theme-container-aside .d2-layout-header-aside-menu-side{
+    background: #263238;
+  }
+
+}

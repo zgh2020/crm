@@ -1,0 +1,17 @@
+@import './setting.scss';
+@import '../theme.scss';
+.theme-#{$theme-name} {
+  .d2-theme-header {
+    background: url(/image/theme/group-platform/headBg.jpg) #3e7deb;
+  }
+  .d2-theme-container .d2-theme-container-aside .el-menu .el-menu-item.is-active i{
+    color: #3e7deb !important;
+  }
+ .d2-multiple-page-control-btn.el-dropdown .el-button:focus, .d2-multiple-page-control-btn .el-dropdown .el-button:hover{
+  color: #3e7deb;
+ }
+ .el-dropdown-menu__item:hover{
+  color: #3e7deb !important;
+ }
+
+}

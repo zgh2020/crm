@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>icon.ico">
+    <link rel="stylesheet" href="<%= BASE_URL %>fontawesome-free-5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="<%= BASE_URL %>fontawesome-free-5.11.2/css/v4-shims.min.css">
+  <!--  <script defer src="<%= BASE_URL %>fontawesome-free-5.11.2/js/all.js"></script>
+    <script defer src="<%= BASE_URL %>fontawesome-free-5.11.2/js/v4-shims.min.js"></script>
+    <script src="<%= VUE_APP_ONLYOFFICE_URL %>/web-apps/apps/api/documents/api.js"></script>-->
+    <script>
+      window.SITE_CONFIG = {};
+      window.SITE_CONFIG['version'] = '<%= process.env.VUE_APP_VERSION %>';     // 版本
+      window.SITE_CONFIG['apiURL'] = '<%= process.env.VUE_APP_API %>';          // api请求地址
+      window.SITE_CONFIG['imURL'] = '<%= process.env.VUE_APP_IM %>';            // IM即时通讯请求地址
+      window.SITE_CONFIG['appURL'] = '<%= process.env.VUE_APP_URL %>';          // appURL一般情况下与api一致,分开更灵活一点 暂时未用
+      window.SITE_CONFIG['onlyOfficeEnable'] = '<%= process.env.VUE_APP_ONLYOFFICE_ENABLE %>';          // 是否开启onlyOfficeEnable 预览 主要为了兼容单机版
+      if (window.SITE_CONFIG['onlyOfficeEnable'] === '1') {
+        const head = document.getElementsByTagName('head')[0];
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = '<%= VUE_APP_ONLYOFFICE_URL %>/web-apps/apps/api/documents/api.js';
+        head.appendChild(script);
+      }
+    </script>
+    <title><%= VUE_APP_TITLE %></title>
+    <style>
+      html, body, #app { height: 100%; margin: 0px; padding: 0px; width: 100%; }
+      .d2-home { background-color: #303133; height: 100%; display: flex; flex-direction: column; }
+      .d2-home__main { user-select: none; width: 100%; flex-grow: 1; display: flex; justify-content: center; align-items: center; flex-direction: column; }
+      .d2-home__footer { width: 100%; flex-grow: 0; text-align: center; padding: 1em 0; }
+      .d2-home__footer > a { font-size: 12px; color: #ABABAB; text-decoration: none; }
+      .d2-home__loading { height: 32px; width: 32px; margin-bottom: 20px; }
+      .d2-home__title { color: #FFF; font-size: 14px; margin-bottom: 10px; }
+      .d2-home__sub-title { color: #ABABAB; font-size: 12px; }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      <strong>
+        很抱歉，如果没有 JavaScript 支持，系统将不能正常工作。请启用浏览器的 JavaScript 然后继续。
+      </strong>
+    </noscript>
+    <div id="app">
+      <div class="d2-home">
+        <div class="d2-home__main">
+          <img
+            class="d2-home__loading"
+            src="./image/loading/loading-spin.svg"
+            alt="loading">
+          <div class="d2-home__title">
+            正在加载资源
+          </div>
+          <div class="d2-home__sub-title">
+            初次加载资源可能需要较多时间 请耐心等待
+          </div>
+        </div>
+        <div class="d2-home__footer">
+        </div>
+      </div>
+    </div>
+    <script src="<%= BASE_URL %>lib/turnjs4/extras/jquery.min.1.7.js"></script>
+    <script src="<%= BASE_URL %>lib/turnjs4/lib/turn.min.js"></script>
+  </body>
+</html>

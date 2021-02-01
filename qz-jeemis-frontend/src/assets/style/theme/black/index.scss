@@ -1,0 +1,16 @@
+@import './setting.scss';
+@import '../theme.scss';
+.theme-#{$theme-name} {
+  .d2-theme-header {
+    background: #001931;
+    //background: linear-gradient(90deg,#1d1e23,#3f4045);
+  }
+  .d2-layout-header-aside-group .d2-layout-header-aside-content .d2-theme-container .d2-theme-container-aside .d2-layout-header-aside-menu-side{
+    background: #001931;
+    box-shadow: 2px 0 6px rgba(0,21,41,.35);
+    // border-top:1px solid #333;
+  }
+  .d2-layout-header-aside-group .d2-layout-header-aside-content .d2-theme-container .d2-theme-container-aside{
+    z-index: 9999;
+  }
+}
